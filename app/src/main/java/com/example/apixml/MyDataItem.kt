@@ -15,5 +15,6 @@ data class MyDataItem(
     val discountValue: Int,
     val quantity: Int,
     val quantityreceived: Int,
+    val img:String
 
 )

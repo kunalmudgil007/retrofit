@@ -3,6 +3,7 @@ package com.example.apixml
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
 import retrofit2.Call
 import retrofit2.Callback
@@ -17,7 +18,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var txtId: TextView//
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
 
         txtId = findViewById(R.id.txtId) //
+
 
     }
 
@@ -46,6 +47,11 @@ class MainActivity : AppCompatActivity() {
                 val myStringBuilder =StringBuilder()
                 for (myData in responseBody){
                     myStringBuilder.append(myData.distributorName)// replace id
+                    myStringBuilder.append(myData.title)
+                    myStringBuilder.append(myData._id)
+
+                    myStringBuilder.append(myData.img)
+
                     myStringBuilder.append("\n")
 
 
