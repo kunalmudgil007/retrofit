@@ -80,10 +80,19 @@ class MainActivity : AppCompatActivity() {
 
                     for (myData in responseBody) {
                         if (myData.Title == searchTitle) {
-                            myStringBuilder.append("Title: ${myData.Title}\n")
-                            myStringBuilder.append("Id: ${myData._id}\n")
+                            myStringBuilder.append("Title: ${myData.Title}\n\n")
+                            myStringBuilder.append("Id: ${myData._id}\n\n")
                             myStringBuilder.append("Date: ${myData.date}\n\n")
-                            myStringBuilder.append("Date: ${myData.BatchID}\n\n")
+                            myStringBuilder.append("BatchID: ${myData.BatchID}\n\n")
+
+                            myStringBuilder.append("Count: ${myData.count}\n\n")
+                            myStringBuilder.append("Orderno: ${myData.orderno}\n\n")
+
+
+                            myStringBuilder.append("BarcodeData: ${myData.barcodeData}\n\n")
+
+
+
                         }
                     }
 
