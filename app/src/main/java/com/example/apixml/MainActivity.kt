@@ -76,10 +76,21 @@ class MainActivity : AppCompatActivity() {
                     val myStringBuilder = StringBuilder()
 
                     // Search criteria
-                    val searchTitle = "STATIC GK Theory+MCQ Chapterwise"
+                    //val searchTitle = "STATIC GK Theory+MCQ Chapterwise"
 
-                    for (myData in responseBody) {
-                        if (myData.Title == searchTitle) {
+
+
+//
+                     val searchbarcodeData = "R-222-2-1888"
+
+
+                      for (myData in responseBody) {
+
+
+                        //if (myData.barcodeData == searchbarcode) {
+                            if (myData.barcodeData.contains(searchbarcodeData)) {
+
+
                             myStringBuilder.append("Title: ${myData.Title}\n\n")
                             myStringBuilder.append("Id: ${myData._id}\n\n")
                             myStringBuilder.append("Date: ${myData.date}\n\n")
@@ -95,6 +106,30 @@ class MainActivity : AppCompatActivity() {
 
                         }
                     }
+
+
+
+
+
+
+
+//                    for (myData in responseBody) {
+//                        if (myData.Title == searchTitle) {
+//                            myStringBuilder.append("Title: ${myData.Title}\n\n")
+//                            myStringBuilder.append("Id: ${myData._id}\n\n")
+//                            myStringBuilder.append("Date: ${myData.date}\n\n")
+//                            myStringBuilder.append("BatchID: ${myData.BatchID}\n\n")
+//
+//                            myStringBuilder.append("Count: ${myData.count}\n\n")
+//                            myStringBuilder.append("Orderno: ${myData.orderno}\n\n")
+//
+//
+//                            myStringBuilder.append("BarcodeData: ${myData.barcodeData}\n\n")
+//
+//
+//
+//                        }
+//                    }
 
                     txtId.text = myStringBuilder.toString()
                 } else {
