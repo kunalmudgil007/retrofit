@@ -38,28 +38,61 @@ class MainActivity : AppCompatActivity() {
 
         val retrofitData=retrofitBuilder.getData()
         retrofitData.enqueue(object : Callback<List<MyDataItem>?> {
+
+
+
+//            override fun onResponse(
+//                call: Call<List<MyDataItem>?>,
+//                response: Response<List<MyDataItem>?>
+//            ) {
+//
+//                val responseBody=response.body()!!
+//                val myStringBuilder =StringBuilder()
+//                for (myData in responseBody){
+//                  //  myStringBuilder.append(myData.distributorName)// replace id
+//                    myStringBuilder.append(myData.Title)
+//                    myStringBuilder.append(myData._id)
+//
+//                    myStringBuilder.append(myData.date)
+//
+//                    myStringBuilder.append("\n")
+//
+//
+//                }
+//               txtId.text = myStringBuilder
+//
+//
+//            }
+
+
+
+
             override fun onResponse(
                 call: Call<List<MyDataItem>?>,
                 response: Response<List<MyDataItem>?>
             ) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()!!
+                    val myStringBuilder = StringBuilder()
 
-                val responseBody=response.body()!!
-                val myStringBuilder =StringBuilder()
-                for (myData in responseBody){
-                    myStringBuilder.append(myData.distributorName)// replace id
-                    myStringBuilder.append(myData.title)
-                    myStringBuilder.append(myData._id)
+                    // Search criteria
+                    val searchTitle = "STATIC GK Theory+MCQ Chapterwise"
 
-                    myStringBuilder.append(myData.img)
+                    for (myData in responseBody) {
+                        if (myData.Title == searchTitle) {
+                            myStringBuilder.append("Title: ${myData.Title}\n")
+                            myStringBuilder.append("Id: ${myData._id}\n")
+                            myStringBuilder.append("Date: ${myData.date}\n\n")
+                            myStringBuilder.append("Date: ${myData.BatchID}\n\n")
+                        }
+                    }
 
-                    myStringBuilder.append("\n")
-
-
+                    txtId.text = myStringBuilder.toString()
+                } else {
+                    Log.e("MainActivity", "onResponse: ${response.code()}")
                 }
-               txtId.text = myStringBuilder
-
-
             }
+
 
             override fun onFailure(call: Call<List<MyDataItem>?>, t: Throwable) {
                 Log.d("MainActivity","onFailure:"+t.message)

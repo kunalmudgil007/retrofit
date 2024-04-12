@@ -5,7 +5,7 @@ import retrofit2.http.GET
 
 interface ApiInterface {
 
-    @GET("getApproveDPO")
+    @GET("getScannedInbound")
     fun getData():Call<List<MyDataItem>>
 
 
